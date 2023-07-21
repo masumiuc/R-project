@@ -325,3 +325,4 @@ weight
 # df <- data.frame(fbsl, weight)
   ##fertilization_bsaL.aov <- aov(weight ~ fbsl, data = df)
 
+library(ggplot2)

@@ -34,3 +34,4 @@ t.test(FreshSemenPrcnt,mu = 10)
 boxplot(FrozenSemenPrcnt)
 qqnorm(FrozenSemenPrcnt)
 qqline(FrozenSemenPrcnt)
+
