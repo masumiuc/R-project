@@ -33,5 +33,11 @@ l1 <- list(num,product)
 l1
 l1[1]
 l1[[1]]
-
-# A Pipe is  a tool in R for expressing a sequence of multiple operations. A pipe is represented by a % sign, followed by a > sign, and another % sign (%>%). 
+install.packages("tidyverse")
+library(tidyverse)
+library(lubridate)
+today()
+now()
+ymd("2022-07-22")
+mdy("January-03-22")
+dmy(030320)
