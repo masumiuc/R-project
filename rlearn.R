@@ -85,3 +85,17 @@ filtered_toothgrowth <- ToothGrowth %>%
   filter(dose==0.5) %>%
   group_by(supp) %>% 
   summarise(mean_len=mean(len,na.rm = T),.groups = "drop")
+
+filtered_toothgrowth
+
+View(filtered_toothgrowth)
+
+#Code from ChatGPT I asked (if I exclude the line (,.groups = "drop") from my command it results same with or without this line)
+
+result <- ToothGrowth %>%
+  filter(dose == 0.5) %>%
+  group_by(supp) %>%
+  summarise(mean_len = mean(len, na.rm = T)) %>%
+  arrange(supp)
+
+View(result)
