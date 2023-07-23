@@ -44,3 +44,44 @@ dmy(030320)
 file.create ("newfile.txt")
 file.copy("newfile.txt", "google")
 unlink("newfile.txt")
+# To check installed packages i the system
+installed.packages()
+#To load class and other uninstalled packages
+library(class)
+update.packages()
+
+#A pipe is a tool in R that helps make your code more efficient and easier to read and understand.
+
+# A pipe is a tool in R for expressing a sequence of multiple operations, represented with "%>%"
+
+#In other words, it takes the output of one statement and makes it the input of the next statement.
+
+# ToothGrowth is data set already installed in R to show the use of pipe
+
+data("ToothGrowth")
+View(ToothGrowth)
+library(dplyr)
+install.packages("dplyr")
+library(dplyr)
+filtered_tg <- filter(ToothGrowth,dose==0.5)
+View(filtered_tg)
+arrange(filtered_tg,len)
+#same thing we will do by nested function # In programming NESTED describes code that performs a particular function and is contained within code that performs a broader function.
+arrange(filter(ToothGrowth, dose==0.5),len)
+# we can use pipe to show the same result 
+# A pipe is a tool in R for expressing a sequence of multiple operations, represented with "%>%"
+
+#In other words, it takes the output of one statement and makes it the input of the next statement. ctrl+shift+m for shortcuts
+
+filtered_toothgrowth1 <- ToothGrowth %>% 
+  filter(dose==0.5) %>% 
+  arrange(len)
+
+View(filtered_toothgrowth1)
+
+#Finding average length of teeth by supplementary applying more complex pipe
+
+filtered_toothgrowth <- ToothGrowth %>% 
+  filter(dose==0.5) %>%
+  group_by(supp) %>% 
+  summarise(mean_len=mean(len,na.rm = T),.groups = "drop")
