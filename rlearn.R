@@ -99,3 +99,22 @@ result <- ToothGrowth %>%
   arrange(supp)
 
 View(result)
+
+install.packages("tidyverse")
+library(tidyverse)
+data("diamonds")
+View(diamonds)
+#since we are not using all the observations we just pull first 6 rows by head()
+
+head(diamonds)
+
+# we could use the structure function str() to highlight the structure of this data frame.
+str(diamonds)
+
+# If we need to know only column names we could use colnames() function.
+
+colnames(diamonds)
+
+#We can also use the mutate function to make changes to our data frame. 
+
+mutate(diamonds, carat_2= carat*100)
