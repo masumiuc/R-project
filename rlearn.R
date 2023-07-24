@@ -144,3 +144,6 @@ readxl_example()
 read_excel(readxl_example("type-me.xlsx"))
 excel_sheets(readxl_example("type-me.xlsx"))
 read_excel(readxl_example("type-me.xlsx"), sheet = "numeric_coercion")
+
+str(mtcars)
+library(tidyverse)
