@@ -129,3 +129,18 @@ data()
 data("mtcars")
 mtcars
 View(mtcars)
+
+readr_example()
+
+readr_example("mtcars.csv")
+read.csv(readr_example("mtcars.csv"))
+summary(mtcars)
+
+glimpse(mtcars)
+
+library(readxl)
+readxl_example()
+
+read_excel(readxl_example("type-me.xlsx"))
+excel_sheets(readxl_example("type-me.xlsx"))
+read_excel(readxl_example("type-me.xlsx"), sheet = "numeric_coercion")
