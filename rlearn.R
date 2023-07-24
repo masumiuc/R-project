@@ -118,3 +118,14 @@ colnames(diamonds)
 #We can also use the mutate function to make changes to our data frame. 
 
 mutate(diamonds, carat_2= carat*100)
+
+as_tibble(dimonds)
+library(tidyverse)
+data("diamonds")
+as_tibble(diamonds)
+
+data()
+
+data("mtcars")
+mtcars
+View(mtcars)
