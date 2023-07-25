@@ -242,3 +242,11 @@ x==y
 
 x!=y
 x!=2
+
+# Logical operator
+# Element-wise logical AND
+x > 1 & x < 5
+x > 2 & x < 1
+# Element-wise logical OR
+# The main difference is that just one of the values of the OR operation needs to be TRUE for the entire OR operation to evaluate to TRUE.
+x > 1 | x < 2
