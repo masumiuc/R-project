@@ -200,4 +200,45 @@ clean_names(penguins)
 
 #When you import data from various sources or merge multiple data sets, column names can sometimes be inconsistent, containing spaces, special characters, capital letters, or other non-standard elements. Such messy column names can be challenging to work with and may lead to errors in your analysis. The clean_names() function helps address these issues by performing the following transformations on column names
 
-ok
+library(dplyr)
+install.packages("palmerpenguins")
+library(palmerpenguins)
+str(penguins)
+skim_without_charts(penguins)
+library(tidyr)
+library(tidyverse)
+
+head(penguins)
+library(skimr)
+skim_without_charts(penguins) # this function needs skimr package installed
+
+#Arithmetic operator
+x <- 2
+y <- 7
+ 
+x+y
+x-y 
+x*y
+x/y
+y/x
+y%%x
+y%/%x
+y^x
+x^y
+
+# Relational operator
+
+x<y
+x>y
+x<=2
+
+# Equal to 
+
+x==2
+y==7
+x==y
+
+# Not equal to
+
+x!=y
+x!=2
