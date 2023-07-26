@@ -250,3 +250,83 @@ x > 2 & x < 1
 # Element-wise logical OR
 # The main difference is that just one of the values of the OR operation needs to be TRUE for the entire OR operation to evaluate to TRUE.
 x > 1 | x < 2
+
+# Logical AND (&&)  and OR (||). The main difference between element-wise logical operators (&, |) and logical operators (&&, ||) is the way they apply to operations with vectors. The operations with double signs, AND (&&) and logical OR (||), only examine the first element of each vector. The operations with single signs, AND (&) and OR (|), examine all the elements of each vector. 
+
+x <- c(3, 5, 7)
+y <- c(2, 4, 6)
+
+x < 5 & y < 5
+# When you compare each element of the two vectors, the output is TRUE, FALSE, FALSE. The first element of both x (3) and y (2) is less than 5, so this is TRUE. The second element of x is not less than 5 (it’s equal to 5) but the second element of y is less than 5, so this is FALSE (because you used AND). The third element of both x and y is not less than 5, so this is also FALSE.
+
+# with double ampersand (&&)
+
+# x < 5 && y < 5 . Though the Google course instructor instructed to run this code in R, it does not run.
+
+# Organize your data by arrange(), group_by(), filter() function
+
+install.packages("palmerpenguins")
+library(palmerpenguins)
+View(penguins)
+
+str(penguins)
+
+install.packages("skimr")
+library(skimr)
+skim_without_charts(penguins)
+tibble(penguins)
+library(tidyr)
+tibble(penguins)
+head(penguins)
+
+install.packages("janitor")
+library(janitor)
+
+clean_names(penguins)
+
+# We can use the arrange function to choose which variable we want to sort by, first wen need to install tidyverse package
+install.packages("tidyverse")
+library(tidyverse)
+
+install.packages("palmerpenguins")
+library(palmerpenguins)
+data("penguins")
+# We can use the arrange function to choose which variable we want to sort by, first wen need to install tidyverse package
+penguins %>% arrange(bill_length_mm)
+
+# For descending order 
+
+penguins %>%  arrange(-bill_length_mm)
+
+# if we want to save this version of data 
+
+penguins2 <- penguins %>% arrange(-bill_length_mm)
+View(penguins2)
+
+skim_without_charts(penguins2)
+head(penguins2)
+
+# If want to know islands and the mean bill length of the penguins living there.
+
+penguins %>% group_by(island) %>% drop_na() %>% summarise(mean_bill_length_mm = mean(bill_length_mm))
+
+penguins %>% group_by(island) %>% drop_na() %>% summarise(max_b = max(bill_length_mm))
+
+penguins %>% group_by(island, species) %>% drop_na() %>% summarise(max_b = max(bill_length_mm, mean_b = mean(bill_length_mm)))
+
+penguins %>% filter(species == "Adelie")
+install.packages("readr")
+library(readr)
+
+#new data set imported "hotel_bookings"
+
+View(hotel_bookings)
+
+str(hotel_bookings)
+head(hotel_bookings)
+
+library(skimr)
+skim_without_charts(hotel_bookings)
+
+library(janitor)
+clean_names(hotel_bookings)
