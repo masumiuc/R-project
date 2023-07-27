@@ -328,5 +328,28 @@ head(hotel_bookings)
 library(skimr)
 skim_without_charts(hotel_bookings)
 
+# To count how many adult were visited in two different hotels
+
+hotel_bookings %>% group_by(hotel) %>% drop_na() %>% summarise(sum_adult = sum(adults))
+
+
 library(janitor)
 clean_names(hotel_bookings)
+
+sum(hotel_bookings$adults)
+colnames(hotel_bookings)
+
+any(is.na(hotel_bookings$hotel))
+
+sum(hotel_bookings$children)
+
+hotel_bookings %>% group_by(hotel) %>% summarise(sum_babies = sum(babies))
+
+hotel_bookings %>% group_by(hotel) %>% summarise(sum_children = sum(children))
+
+sum(hotel_bookings$children)
+library(janitor)
+glimpse(hotel_bookings)
+
+hotel_bookings %>% group_by(hotel) %>% drop_na() %>% summarise(sum_children = sum(children))
+hotel_bookings %>% drop_na() %>% summarise(sum(children))
