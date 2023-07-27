@@ -363,5 +363,90 @@ z <- sum(hotel_bookings$babies, na.rm = TRUE)
 
 sum(x+y+z)
 
+summary(hotel_bookings$adults)
+summary(hotel_bookings$hotel)
+
+trimmed_df <- hotel_bookings %>% 
+  select(hotel, is_canceled, lead_time)
+print(trimmed_df)
+
+trimmed_df %>% select(hotel, is_canceled, lead_time) %>% 
+  rename(hotel_type= hotel)
+
+# to unite two column
+
+example_df <- hotel_bookings %>% 
+  select(arrival_date_year, arrival_date_month) %>% 
+  unite(arrival_month_year, c("arrival_date_month", "arrival_date_year"), sep = " " )
+print(example_df)
+
+
+# Let's say you wanted to create a new column that summed up all the adults, children, and babies on a reservation for the total number of people
+
+example_mdf <- hotel_bookings %>% drop_na() %>% 
+  mutate(guests = adults, babies, children)
+
+head(example_mdf)
+
+# Calculate the total number of canceled bookings
+# Calculate the average lead time for booking
+# Make a column called 'number_canceled' to represent the total number of canceled bookings
+# make a column called 'average_lead_time' to represent the average lead time.
+
+example_summarise <- hotel_bookings %>% 
+  summarise(number_canceled = sum(is_canceled), avearge_lead_time = mean(lead_time))
+
+
+head(example_summarise)
+id <- c(1:10)
+
+
+name <- c("John Mendes", "Rob Stewart", "Rachel Abrahamson", "Christy Hickman", "Johnson Harper", "Candace Miller", "Carlson Landy", "Pansy Jordan", "Darius Berry", "Claudia Garcia")
+
+
+job_title <- c("Professional", "Programmer", "Management", "Clerical", "Developer", "Programmer", "Management", "Clerical", "Developer", "Programmer")
+
+
+employee <- data.frame(id, name, job_title)
+
+head(employee)
+
+# Manual Data Frame creation
+
+employee_id <- c(00100:00105)
+employee_name <- c("Junaid Khondokar", "Mohammed Alal", "Mohammed Jakir", "Mohammed Ahsan", "Sah Jalal", "Joynal Uddin")
+address <- c("Khulna", "Jessor", "Lakshmipur", "Cox's Bazar", "Chattogram", "Dhaka")
+
+office_staff <- data.frame(employee_id, employee_name, address)
+head(office_staff)
+
+# Use of separate() function 
+
+library(tidyr)
+
+office_staff_sep <- separate(office_staff, employee_name, into = c("first_name", "last_name"), sep = " ")
+
+head(office_staff_sep)
+
+unite(office_staff_sep, 'name', first_name, last_name, sep = " ")
+
+first_name <- c("John", "Rob", "Rachel", "Christy", "Johnson", "Candace", "Carlson", "Pansy", "Darius", "Claudia")
+
+last_name <- c("Mendes", "Stewart", "Abrahamson", "Hickman", "Harper", "Miller", "Landy", "Jordan", "Berry", "Garcia")
+
+job_title <- c("Professional", "Programmer", "Management", "Clerical", "Developer", "Programmer", "Management", "Clerical", "Developer", "Programmer")
+
+employee <- data.frame(id, first_name, last_name, job_title)
+
+print(employee)
+
+unite(employee, 'name', first_name, last_name, sep = " ")
+
+View(penguins)
+
+library(janitor)
+
+penguins %>% 
+  mutate(body_mass_kg = body_mass_g/1000) %>% drop_na()
 
 
