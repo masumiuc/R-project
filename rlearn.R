@@ -353,3 +353,15 @@ glimpse(hotel_bookings)
 
 hotel_bookings %>% group_by(hotel) %>% drop_na() %>% summarise(sum_children = sum(children))
 hotel_bookings %>% drop_na() %>% summarise(sum(children))
+
+hotel_bookings %>% group_by(hotel, arrival_date_year) %>% drop_na() %>% 
+  summarise(total_adult = sum(adults), total_babies = sum(babies), total_children = sum(children), total_guests = sum(adults+children+babies))
+
+x <- sum(hotel_bookings$adults, na.rm = TRUE)
+y <- sum(hotel_bookings$children, na.rm = TRUE)
+z <- sum(hotel_bookings$babies, na.rm = TRUE)
+
+sum(x+y+z)
+
+
+
