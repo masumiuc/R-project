@@ -449,4 +449,18 @@ library(janitor)
 penguins %>% 
   mutate(body_mass_kg = body_mass_g/1000) %>% drop_na()
 
+new_hotelbookings <- hotel_bookings %>% 
+  select(-is_canceled, -arrival_date_month)
 
+head(new_hotelbookings)
+
+
+View(hotel_bookings)
+head(hotel_bookings)
+hotel_bookings %>% 
+  pivot_longer(
+    cols = !hotel,
+    names_to = "cloumn",
+    values_to = "count",
+    values_drop_na = TRUE
+  )
