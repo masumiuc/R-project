@@ -450,17 +450,29 @@ penguins %>%
   mutate(body_mass_kg = body_mass_g/1000) %>% drop_na()
 
 new_hotelbookings <- hotel_bookings %>% 
-  select(-is_canceled, -arrival_date_month)
+  select(-is_canceled, -arrival_date_month) %>% drop_na()
 
 head(new_hotelbookings)
 
 
 View(hotel_bookings)
 head(hotel_bookings)
-hotel_bookings %>% 
-  pivot_longer(
-    cols = !hotel,
-    names_to = "cloumn",
-    values_to = "count",
-    values_drop_na = TRUE
-  )
+
+# to remove data frame from R global environment
+
+rm(new_hotelbookings)
+
+
+install.packages("Tmisc")
+library(Tmisc)
+data(quartet)
+View(quartet)
+
+quartet %>% 
+  group_by(set) %>% 
+  summarise(mean(x), sd(x), mean(y), sd(y), cor(x,y))
+
+ggplot(quartet, aes(x,y)) + geom_point() + geom_smooth(method = lm,se=FALSE) + facet_wrap(~set)
+
+
+
