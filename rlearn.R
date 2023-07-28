@@ -474,5 +474,41 @@ quartet %>%
 
 ggplot(quartet, aes(x,y)) + geom_point() + geom_smooth(method = lm,se=FALSE) + facet_wrap(~set)
 
+install.packages('datasauRus')
+library(datasauRus)
+View(datasaurus_dozen)
+
+glimpse(datasaurus_dozen)
+skim_without_charts(datasaurus_dozen)
+
+ggplot(datasaurus_dozen, aes(x=x, y=y, colour=dataset))+geom_point()+
+  theme_void()+theme(legend.position = "none")+facet_wrap(~dataset, ncol = 3)
+# To check the bias of data
+install.packages("SimDesign")
+library(SimDesign)
+actual_temp <- c(68.3, 70, 72.4, 71,67, 70)
+predicted_temp <- c(67.9, 69, 71.5, 70, 67, 69)
+
+bias(actual_temp, predicted_temp)
 
 
+data.frame(ToothGrowth)
+ToothGrowthna <- ToothGrowth %>% drop_na()
+diff <- ToothGrowthna$len - ToothGrowthna$dose
+print(diff)
+bias(diff)
+
+library(SimDesign)
+mat <- cbind(m1 = rnorm(100, 110, sd = 0.4), m2 = rnorm(100, 101, sd = 1.1))
+print(mat)
+bias(mat, parameter = 3)
+bias(mat, parameter = 2, type = 'relative')
+bias(mat, parameter = 2, type = 'standardized')
+
+mean(hotel_bookings$lead_time)
+
+rename_with(hotel_bookings, toupper)
+
+hotel_bookings %>% arrange(lead_time)
+
+penguins %>% drop_na() %>% group_by(species) %>% summarise(mean(body_mass_g))
