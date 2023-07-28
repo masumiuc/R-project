@@ -512,3 +512,34 @@ rename_with(hotel_bookings, toupper)
 hotel_bookings %>% arrange(lead_time)
 
 penguins %>% drop_na() %>% group_by(species) %>% summarise(mean(body_mass_g))
+
+# Data visualization with R
+install.packages("palmerpenguins")
+library(palmerpenguins)
+data.frame(penguins)
+library(ggplot2)
+library(tidyverse)
+penguin_nna <- penguins %>% drop_na()
+ggplot(data=penguin_nna)+geom_point(mapping=aes(x=flipper_length_mm, y=body_mass_g, color = species))
+
+ggplot(data = penguin_nna, mapping = aes(x=flipper_length_mm,y=body_mass_g, color = species))+geom_point()
+library(ggplot2)
+library(tidyverse)
+ggplot(data = penguin_nna)+geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color = species))
+
+# Try with another variable bill_length_mm and bill_depth_mm
+
+ggplot(data = penguin_nna)+
+  geom_point(mapping = aes(x=bill_length_mm, y=bill_depth_mm, color = species))
+
+
+
+
+
+
+
+
+
+
+
+
