@@ -574,6 +574,44 @@ ggplot(data = diamonds) + geom_bar(mapping = aes(x=cut, color = cut))
 
 ggplot(data = diamonds) + geom_bar(mapping = aes(x=cut, fill = clarity))
 
+install.packages("ggplot2")
 
+install.packages("palmerpenguins")
+
+# The code can also be written 
+
+ggplot(data = penguin_nna, aes(x=flipper_length_mm, y=body_mass_g))+geom_point()+geom_smooth(method = "loess")
+
+# There are two types of smoothing loess and gam (gam is useful for smoothing plots with a large number of points.
+
+ggplot(data = penguin_nna, aes(x=flipper_length_mm, y=body_mass_g))+geom_point()+geom_smooth(method = "loess")
+
+ggplot(data = penguin_nna, aes(x=flipper_length_mm, y=body_mass_g))+geom_point()+
+  geom_smooth(method = "gam", formula = y ~s(x))
+
+# Use of facets
+
+ggplot(penguin_nna, aes(x=flipper_length_mm, y=body_mass_g, color = species))+
+  geom_point()+
+  geom_smooth()+
+  facet_wrap(~species)
+
+ggplot(data = diamonds)+
+  geom_bar(mapping = aes(x=color, fill = cut))+
+  facet_wrap(~cut)
+
+# two variables in facets
+
+ggplot(penguin_nna, aes(x=flipper_length_mm, y=body_mass_g, color = species))+
+  geom_point()+
+  facet_grid(sex~species)
+
+exa_data <- data.frame(x = 1:12,
+                       y = 1:12,
+                       g1 = rep(LETTERS[1:4], each = 3),
+                       g2 = letters [1:4])
+print(exa_data)
+
+ggplot(data = exa_data)+geom_point(mapping = aes(x,y))
 
 
