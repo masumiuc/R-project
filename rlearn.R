@@ -532,13 +532,47 @@ ggplot(data = penguin_nna)+geom_point(mapping = aes(x=flipper_length_mm, y=body_
 ggplot(data = penguin_nna)+
   geom_point(mapping = aes(x=bill_length_mm, y=bill_depth_mm, color = species))
 
+# To see how many rows contain NA value.
+
+apply(is.na(penguins), 2, sum)
 
 
+df <- data.frame(A = c(1, 2, NA),
+                 B = c(NA, NA, 5),
+                 C = c(7, NA, 9))
+glimpse(df)
+apply(is.na(df), 2, sum)
+
+df %>% drop_na()
+
+ggplot(data = penguin_nna)+
+  geom_point(mapping = aes(x=flipper_length_mm, 
+                           y=body_mass_g, color = species, shape = species, size =species))
 
 
+ggplot(data = penguin_nna)+geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, alpha = species))
 
 
+ggplot(data = penguin_nna)+geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g), color = "purple")
 
+ggplot(data = penguin_nna)+geom_smooth(mapping = aes(x=flipper_length_mm, y=body_mass_g))+
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g))
+
+
+ggplot(data = penguin_nna)+geom_smooth(mapping = aes(x=flipper_length_mm, y=body_mass_g, linetype = species))
+
+ggplot(data = penguin_nna)+geom_jitter(mapping = aes(x=flipper_length_mm, y=body_mass_g))
+
+
+ggplot(data = diamonds)+geom_bar(mapping = aes(x=cut))
+
+
+ggplot(data = diamonds) + geom_bar(mapping = aes(x=cut, fill = cut))
+
+
+ggplot(data = diamonds) + geom_bar(mapping = aes(x=cut, color = cut))
+
+ggplot(data = diamonds) + geom_bar(mapping = aes(x=cut, fill = clarity))
 
 
 
