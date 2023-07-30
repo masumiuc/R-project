@@ -640,6 +640,8 @@ ggplot(data = hotel_un)+
   facet_wrap(~market_segment)+
   theme(axis.text.x = element_text(angle = 90))
 
+ggsave("Hote Booking Data.png", width = 5, height = 5)
+
 ggplot(data = hotel_un)+
   geom_bar(mapping = aes(x=distribution_channel))+
   facet_grid(~deposit_type)+
@@ -655,18 +657,55 @@ ggplot(data = hotel_bookings) +
   facet_wrap(~deposit_type~market_segment) +
   theme(axis.text.x = element_text(angle = 45))
 
+ggplot(data = hotel_bookings)+geom_point(mapping = aes(x=lead_time, y=children))
+
+ggplot(data = hotel_bookings)+
+  geom_bar(mapping = aes(x=hotel, fill=market_segment))+
+  facet_wrap(~market_segment)
 
 
 
+  
+onlineta_hotel_bookings <- filter(hotel_bookings, hotel == "City Hotel" & 
+                                    hotel_bookings$market_segment == "Online TA")
 
 
+onlineta_hotel_bookingv2 <- hotel_bookings %>% 
+  filter(hotel=="City Hotel") %>% 
+  filter(market_segment=="Online TA")
 
 
+print(onlineta_hotel_bookingv2)
+
+ggplot(data = onlineta_hotel_bookings)+geom_point(mapping = aes(x=lead_time, y=children))
+
+ggplot(data = penguin_nna)+geom_bar(mapping = aes(x=species, fill = species))+
+  labs(title = "Penguin Species")
+
+ggplot(data = penguin_nna)+
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color = species))+
+  labs(title = "Palmar Penguins: Body Mass vs Flipper Length")
+
+ggplot(data = penguin_nna)+
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color = species))+
+  labs(title = "Palmar Penguins: Body Mass vs Flipper Length", subtitle = "Sample of three palmer penguin species")
+
+ggplot(data = penguin_nna)+
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color = species))+
+  labs(title = "Palmar Penguins: Body Mass vs Flipper Length", 
+  subtitle = "Sample of three palmer penguin species", 
+  caption = "Data was collected by Dr.Kristen Gorman")
+
+ggplot(data = penguin_nna)+
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color = species))+
+  labs(title = "Palmar Penguins: Body Mass vs Flipper Length", 
+       subtitle = "Sample of three palmer penguin species", 
+       caption = "Data was collected by Dr.Kristen Gorman")+
+  annotate("text", x=220,y=3500, label = "The Gentoos are the largest", 
+           color = "purple", fontface = "bold", size = 4.5, angle = 25)
 
 
-
-
-
+ggsave("Three penguins species.png")                                            # Saving viz file
 
 
 
