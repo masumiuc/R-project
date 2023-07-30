@@ -580,11 +580,13 @@ install.packages("palmerpenguins")
 
 # The code can also be written 
 
-ggplot(data = penguin_nna, aes(x=flipper_length_mm, y=body_mass_g))+geom_point()+geom_smooth(method = "loess")
+ggplot(data = penguin_nna, aes(x=flipper_length_mm, y=body_mass_g))+geom_point()
++geom_smooth(method = "loess")
 
 # There are two types of smoothing loess and gam (gam is useful for smoothing plots with a large number of points.
 
-ggplot(data = penguin_nna, aes(x=flipper_length_mm, y=body_mass_g))+geom_point()+geom_smooth(method = "loess")
+ggplot(data = penguin_nna, aes(x=flipper_length_mm, y=body_mass_g))+geom_point()+
+  geom_smooth(method = "loess")
 
 ggplot(data = penguin_nna, aes(x=flipper_length_mm, y=body_mass_g))+geom_point()+
   geom_smooth(method = "gam", formula = y ~s(x))
@@ -614,4 +616,57 @@ print(exa_data)
 
 ggplot(data = exa_data)+geom_point(mapping = aes(x,y))
 
-test
+hotel_un <- hotel_bookings %>% subset(distribution_channel != "Undefined")      # How to remove specific value from column
+
+ggplot(data = hotel_un)+
+  geom_bar(mapping = aes(x=distribution_channel, fill = deposit_type))
+
+
+ggplot(data = hotel_un)+
+  geom_bar(mapping = aes(x=distribution_channel, fill = market_segment))
+
+ggplot(data = hotel_un)+
+  geom_bar(mapping = aes(x=distribution_channel, fill = deposit_type))+
+  facet_wrap(~deposit_type)
+
+
+ggplot(data = hotel_un)+
+  geom_bar(mapping = aes(x=distribution_channel, fill = deposit_type))+         # To change the text direction in x axis
+  facet_wrap(~deposit_type)+
+  theme(axis.text.x = element_text(angle = 45))
+
+ggplot(data = hotel_un)+
+  geom_bar(mapping = aes(x=distribution_channel))+
+  facet_wrap(~market_segment)+
+  theme(axis.text.x = element_text(angle = 90))
+
+ggplot(data = hotel_un)+
+  geom_bar(mapping = aes(x=distribution_channel))+
+  facet_grid(~deposit_type)+
+  theme(axis.text.x = element_text(angle = 135))
+
+ggplot(data = hotel_un)+
+  geom_bar(mapping = aes(x=distribution_channel))+
+  facet_grid(~deposit_type~market_segment)+
+  theme(axis.text.x = element_text(angle = 45))
+
+ggplot(data = hotel_bookings) +
+  geom_bar(mapping = aes(x = distribution_channel)) +
+  facet_wrap(~deposit_type~market_segment) +
+  theme(axis.text.x = element_text(angle = 45))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
