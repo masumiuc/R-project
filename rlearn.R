@@ -707,5 +707,6 @@ ggplot(data = penguin_nna)+
 
 ggsave("Three penguins species.png")                                            # Saving viz file
 
+install.packages("rmarkdown")
 
-
+plot(pressure)

@@ -1,0 +1,28 @@
+---
+title: "Penguins Plot"
+author: "Abdul Kader"
+date: "2023-07-31"
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+library(ggplot2)
+```
+
+## Relationship Between Flipper Length and Body Mass of palmer penguins.
+
+The below code chunk will generate a plot diagram which shows the relationship between flipper length and body mass of the three species of the penguins Adelie, Chinstarp, and Gentoo.
+
+```{r Flipper Length vs Body Mass, echo=TRUE, warning=FALSE}
+ggplot(data = penguins)+
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color = species))+
+  labs(title = "Palmer Penguins: Body Mass vs Flipper Length", 
+       subtitle = "Sample of three palmer penguin species", 
+       caption = "Data was collected by Dr.Kristen Gorman")
+```
+
