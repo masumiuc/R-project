@@ -709,4 +709,36 @@ ggsave("Three penguins species.png")                                            
 
 install.packages("rmarkdown")
 
-plot(pressure)
+plot(pressure)                                                                  # Default plot 
+
+
+library(rmarkdown)
+
+library(readr)
+
+googlr_ad <- read.csv("C:/Users/ANALYST/Downloads/geotargets.csv")
+
+
+head(googlr_ad)
+
+library(tidyverse)
+library(tidyr)
+
+num_countries <- googlr_ad %>% select(country_code) %>% n_distinct()            # If need to know how many distinct values are in a specific column
+print(num_countries)
+
+googlr_ad %>% distinct(country_code, .keep_all = TRUE) %>%                      # For all distinct values in a column
+  select(country_code) %>% 
+  rename(courties = country_code)
+
+
+
+
+
+
+
+
+
+
+
+
